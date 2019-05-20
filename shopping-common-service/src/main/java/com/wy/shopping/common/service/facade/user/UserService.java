@@ -1,6 +1,6 @@
 package com.wy.shopping.common.service.facade.user;
 
-import com.wy.shopping.common.service.entity.UserEntity;
+import com.wy.shopping.common.service.entity.user.UserEntity;
 import com.wy.shopping.common.service.req.user.LoginReq;
 
 /**

@@ -1,5 +1,6 @@
-package com.wy.shopping.common.service.entity;
+package com.wy.shopping.common.service.entity.user;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,6 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Builder
 public class PermissionEntity {
     /** 主键 */
     private String id;

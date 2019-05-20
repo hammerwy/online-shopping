@@ -1,7 +1,8 @@
-package com.wy.shopping.common.service.entity;
+package com.wy.shopping.common.service.entity.user;
 
 import com.wy.shopping.common.service.enumeration.user.UserStateEnum;
 import com.wy.shopping.common.service.enumeration.user.UserTypeEnum;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,6 +17,7 @@ import java.sql.Timestamp;
 @Setter
 @Getter
 @ToString
+@Builder
 public class UserEntity {
     /** 主键 */
     private String id;

@@ -1,6 +1,8 @@
 package com.wy.shopping.common.service.req.user;
 
+
 import com.wy.shopping.common.service.req.AbstractReq;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,24 +15,19 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LoginReq extends AbstractReq {
-    /**
-     * 用户名
-     */
+@Builder
+public class AdminCreateReq extends AbstractReq {
+
+    /** 用户名 */
     private String username;
 
-    /**
-     * 密码
-     */
+    /** 密码 */
     private String password;
 
-    /**
-     * 手机号
-     */
+    /** 手机号 */
     private String phone;
 
-    /**
-     * 邮箱
-     */
-    private String mail;
+    /** 角色ID */
+    private String roleId;
+
 }

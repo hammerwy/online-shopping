@@ -1,5 +1,6 @@
-package com.wy.shopping.common.service.entity;
+package com.wy.shopping.common.service.entity.user;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,6 +15,7 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
+@Builder
 public class RoleEntity {
     /** 主键 */
     private String id;

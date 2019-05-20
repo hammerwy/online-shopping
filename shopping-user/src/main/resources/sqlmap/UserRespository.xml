@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wy.shopping.user.service.repository.UserRepository">
+    <resultMap id="userMap" type="com.wy.shopping.common.service.entity.user.UserEntity">
+        <result property="id" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="phone" column="phone"/>
+        <result property="mail" column="mail"/>
+        <result property="licencePic" column="licence_pic"/>
+        <result property="registerTime" column="register_time"/>
+        <result property="userTypeEnum" column="user_type" typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
+        <result property="userStateEnum" column="user_state" typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
+        <association property="roleEntity" javaType="com.wy.shopping.common.service.entity.user.RoleEntity">
+            <result property="id" column="role_id"/>
+            <result property="name" column="role_name"/>
+            <result property="desc" column="role_desc"/>
+            <collection property="permissionList" ofType="com.wy.shopping.common.service.entity.user.PermissionEntity">
+                <result property="id" column="permission_id"/>
+                <result property="permission" column="permission_name"/>
+                <result property="desc" column="permission_desc"/>
+            </collection>
+        </association>
+    </resultMap>
+
+    <select id="findUsers" resultMap="userMap">
+        SELECT user.id as id, username, phone, mail, licence_pic, register_time,
+        user_type,
+        user_state,
+        role.id as role_id,
+        role.name as role_name,
+        role.desc as role_desc,
+        permission.id as permission_id,
+        permission.permission as permission,
+        permission.desc as permission_desc
+        FROM
+        t_user as user
+        LEFT JOIN
+        t_role as role
+        ON
+        user.role_id = role.id
+
+        LEFT JOIN
+        t_role_permission as role_permission
+        ON
+        role_permission.role_id = role.id
+
+        LEFT JOIN
+        t_permission as permission
+        ON
+        role_permission.permission_id = permission.id
+
+        <where>
+            <if test="userQueryReq.id != null">
+                user.id = #{userQueryReq.id}
+            </if>
+            <if test="userQueryReq.username != null">
+                AND
+
+                username = #{userQueryReq.username}
+            </if>
+            <if test="userQueryReq.password != null">
+                AND
+                password = #{userQueryReq.password}
+            </if>
+            <if test="userQueryReq.phone != null">
+                AND
+                phone = #{userQueryReq.phone}
+            </if>
+            <if test="userQueryReq.mail != null">
+                AND
+                mail = #{userQueryReq.mail}
+            </if>
+            <if test="userQueryReq.registerTimeStart != null">
+                AND
+                register_time &gt; #{userQueryReq.registerTimeStart}
+            </if>
+            <if test="userQueryReq.registerTimeEnd != null">
+                AND
+                register_time &lt; #{userQueryReq.registerTimeEnd}
+            </if>
+            <if test="userQueryReq.userType != null">
+                AND
+                user_type = #{userQueryReq.userType}
+            </if>
+            <if test="userQueryReq.userState != null">
+                AND
+                user_state = #{userQueryReq.userState}
+            </if>
+            <if test="userQueryReq.roleId != null">
+                AND
+                role_id = #{userQueryReq.roleId}
+            </if>
+        </where>
+
+        <if test="userQueryReq.orderByRegisterTime != null and userQueryReq.orderByRegisterTime == 1">
+            order by register_time DESC
+        </if>
+        <if test="userQueryReq.orderByRegisterTime != null and userQueryReq.orderByRegisterTime == 2">
+            order by register_time ASC
+        </if>
+    </select>
+
+    <insert id="createUser">
+        insert into t_user (user_id, username, password, phone, mail, licence_pic, register_time, user_type, user_state, role_id);
+        values (#{id}, #{username}, #{password}, #{phone}, #{mail}, #{licencePic}, #{registerTime},#{userTypeEnum.code},#{userStateEnum.code},#{roleEntity.id})
+    </insert>
+    
+    <update id="batchUpdateUserState">
+        update t_user
+        set user_state = #{userStateCode}
+        where user_id in
+        <foreach collection="userIdList" item="userId" open="(" close=")" separator=",">
+            #{userId}
+        </foreach>
+    </update>
+    
+    <select id="findRoles" resultType="com.wy.shopping.common.service.entity.user.RoleEntity">
+        select * from t_role
+    </select>
+
+</mapper>
+    
