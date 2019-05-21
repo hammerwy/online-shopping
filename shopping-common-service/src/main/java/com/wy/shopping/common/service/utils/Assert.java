@@ -54,7 +54,7 @@ public class Assert {
      * @param multiParam    多个字符串参数
      * @return Assert
      */
-    public Assert anyNotEmpty(ExceptionCodeEnum exceptionCode, String... multiParam) {
+    public Assert allNotEmpty(ExceptionCodeEnum exceptionCode, String... multiParam) {
         if (StringUtils.isAllEmpty(multiParam)) {
             throw new BizException(exceptionCode);
         }

@@ -1,6 +1,7 @@
 package com.wy.shopping.common.service.req.user;
 
 import com.wy.shopping.common.service.req.AbstractReq;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Builder
 public class LoginReq extends AbstractReq {
     /**
      * 用户名

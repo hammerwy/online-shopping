@@ -7,9 +7,8 @@ import static com.wy.shopping.common.service.exception.ExceptionPrefix.*;
 /**
  * @author wy
  * @description 异常信息 状态码 和 异常描述
- *
+ * <p>
  * 异常码的前缀请参考：{@link ExceptionPrefix}
- *
  * @date 2019-05-18
  */
 @Getter
@@ -46,6 +45,8 @@ public enum ExceptionCodeEnum {
     NAME_NULL(UserExpPrefix + "015", "name为空"),
     LOCATIONID_NULL(UserExpPrefix + "016", "locationId为空"),
     LOCATIONUPDATEREQ_NULL(UserExpPrefix + "017", "LocationUpdateReq为空"),
+    MAIL_OR_PHONE_ALREADY_EXISTS(UserExpPrefix + "018", "手机或邮箱已被注册"),
+    PASSWORD_ERROR(UserExpPrefix + "019", "用户密码错误"),
 
     /**
      * Product模块异常

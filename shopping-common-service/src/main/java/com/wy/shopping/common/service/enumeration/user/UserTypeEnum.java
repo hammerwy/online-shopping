@@ -30,4 +30,16 @@ public enum UserTypeEnum implements BaseEnum {
         this.code = code;
         this.message = message;
     }
+
+    /**
+     * 根据code获取实例
+     */
+    public static UserTypeEnum getByCode(int code) {
+        for (UserTypeEnum userTypeEnum : UserTypeEnum.values()) {
+            if (userTypeEnum.getCode() == code) {
+                return userTypeEnum;
+            }
+        }
+        return null;
+    }
 }

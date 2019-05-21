@@ -23,7 +23,7 @@ public interface UserRepository {
      * @param userQueryReq 查找条件
      * @return 用户集合
      */
-    List<UserEntity> findUsers(UserQueryReq userQueryReq);
+    List<UserEntity> findUsers(@Param("userQueryReq") UserQueryReq userQueryReq);
 
     /**
      * 添加一个用户信息
@@ -117,6 +117,12 @@ public interface UserRepository {
      */
     void createLocation(LocationEntity locationEntity);
 
+    /**
+     * 删除地址信息
+     *
+     * @param locationId 地址记录id
+     * @param userId     用户id
+     */
     void deleteLocation(@Param("locationId") String locationId, @Param("userId") String userId);
 
     /**

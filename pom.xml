@@ -37,7 +37,7 @@
         <easy.excel.version>1.0.2</easy.excel.version>
         <pagehelper.version>1.2.10</pagehelper.version>
         <guava.version>23.0</guava.version>
-        <common.util.version>3.1</common.util.version>
+        <common.util.version>3.9</common.util.version>
         <swagger.version>2.9.2</swagger.version>
         <jwt.version>0.9.1</jwt.version>
         <commons-io.version>2.4</commons-io.version>

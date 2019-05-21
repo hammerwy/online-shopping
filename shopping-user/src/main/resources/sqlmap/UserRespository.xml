@@ -5,6 +5,7 @@
     <resultMap id="userMap" type="com.wy.shopping.common.service.entity.user.UserEntity">
         <result property="id" column="user_id"/>
         <result property="username" column="username"/>
+        <result property="password" column="password"/>
         <result property="phone" column="phone"/>
         <result property="mail" column="mail"/>
         <result property="licencePic" column="licence_pic"/>
@@ -12,7 +13,7 @@
         <result property="userTypeEnum" column="user_type" typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
         <result property="userStateEnum" column="user_state" typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
         <association property="roleEntity" javaType="com.wy.shopping.common.service.entity.user.RoleEntity">
-            <result property="id" column="role_id"/>
+            <id property="id" column="role_id"/>
             <result property="name" column="role_name"/>
             <result property="desc" column="role_desc"/>
             <collection property="permissionList" ofType="com.wy.shopping.common.service.entity.user.PermissionEntity">
@@ -24,31 +25,37 @@
     </resultMap>
 
     <select id="findUsers" resultMap="userMap">
-        SELECT user.id as id, username, phone, mail, licence_pic, register_time,
-        user_type,
-        user_state,
-        role.id as role_id,
-        role.name as role_name,
-        role.desc as role_desc,
-        permission.id as permission_id,
-        permission.permission as permission,
-        permission.desc as permission_desc
+        SELECT user.user_id as user_id,
+               username,
+               password,
+               phone,
+               mail,
+               licence_pic,
+               register_time,
+               user_type,
+               user_state,
+        role.role_id as role_id,
+        role.role_name as role_name,
+        role.role_desc as role_desc,
+        permission.permission_id as permission_id,
+        permission.permission_name as permission_name,
+        permission.permission_desc as permission_desc
         FROM
         t_user as user
         LEFT JOIN
         t_role as role
         ON
-        user.role_id = role.id
+        user.role_id = role.role_id
 
         LEFT JOIN
         t_role_permission as role_permission
         ON
-        role_permission.role_id = role.id
+        role_permission.role_id = role.role_id
 
         LEFT JOIN
         t_permission as permission
         ON
-        role_permission.permission_id = permission.id
+        role_permission.permission_id = permission.permission_id
 
         <where>
             <if test="userQueryReq.id != null">
@@ -56,13 +63,12 @@
             </if>
             <if test="userQueryReq.username != null">
                 AND
-
                 username = #{userQueryReq.username}
             </if>
-            <if test="userQueryReq.password != null">
-                AND
-                password = #{userQueryReq.password}
-            </if>
+<!--            <if test="userQueryReq.password != null">-->
+<!--                AND-->
+<!--                password = #{userQueryReq.password}-->
+<!--            </if>-->
             <if test="userQueryReq.phone != null">
                 AND
                 phone = #{userQueryReq.phone}
@@ -102,7 +108,7 @@
     </select>
 
     <insert id="createUser">
-        insert into t_user (user_id, username, password, phone, mail, licence_pic, register_time, user_type, user_state, role_id);
+        insert into t_user (user_id, username, password, phone, mail, licence_pic, register_time, user_type, user_state, role_id)
         values (#{id}, #{username}, #{password}, #{phone}, #{mail}, #{licencePic}, #{registerTime},#{userTypeEnum.code},#{userStateEnum.code},#{roleEntity.id})
     </insert>
     
@@ -119,5 +125,77 @@
         select * from t_role
     </select>
 
+    <delete id="deleteRole">
+      DELETE FROM t_role WHERE role_id = #{roleId}
+    </delete>
+
+    <delete id="deleteRolePermission">
+        DELETE FROM t_role_permission WHERE role_id = #{roleId}
+    </delete>
+
+    <delete id="deleteRoleMenu">
+        DELETE FROM t_role_menu WHERE role_id = #{roleId}
+    </delete>
+    <delete id="deleteLocation">
+        DELETE FROM t_location where id = #{locationId} AND user_id = #{userId}
+    </delete>
+
+    <insert id="insertRoleMenu">
+        insert into t_role_menu (role_id, menu_id)
+        values
+        <foreach collection="roleMenuReq.menuIdList" item="menuId" separator=",">
+            (#{roleMenuReq.roleId}, #{menuId})
+        </foreach>
+    </insert>
+
+    <insert id="insertRolePermission">
+        insert into t_role_permission (role_id, permission_id)
+        values
+        <foreach collection="rolePermissionReq.permissionIdList" item="permissionId" separator=",">
+            (#{rolePermissionReq.roleId}, #{permissionId})
+        </foreach>
+    </insert>
+
+    <select id="findPermissions" resultType="com.wy.shopping.common.service.entity.user.PermissionEntity">
+      SELECT * FROM t_permission
+    </select>
+
+    <select id="findMenus" resultType="com.wy.shopping.common.service.entity.user.MenuEntity">
+        SELECT * FROM t_menu
+    </select>
+
+    <select id="findLocations" resultType="com.wy.shopping.common.service.entity.user.LocationEntity">
+      SELECT  location.id as id,
+              location.location as location,
+              location.user_id as userId,
+              location.post_code as postCode,
+              location.phone as phone,
+              location.name as name
+      FROM t_location as location WHERE location.user_id = #{userId}
+    </select>
+
+    <insert id="createLocation">
+        insert into t_location (id, location, name, phone, post_code, user_id)
+        values (#{id}, #{location}, #{name}, #{phone}, #{postCode}, #{userId})
+    </insert>
+
+    <update id="updateLocation">
+        update t_location
+        <set>
+            <if test="locationUpdateReq.location != null">
+                location=#{locationUpdateReq.location},
+            </if>
+            <if test="locationUpdateReq.name != null">
+                name=#{locationUpdateReq.name},
+            </if>
+            <if test="locationUpdateReq.phone != null">
+                phone=#{locationUpdateReq.phone},
+            </if>
+            <if test="locationUpdateReq.postCode != null">
+                postCode=#{locationUpdateReq.postCode}
+            </if>
+        </set>
+        where id=#{locationUpdateReq.locationId} and user_id = #{userId}
+    </update>
 </mapper>
     

@@ -26,5 +26,22 @@ public class EnumUtil {
         return null;
     }
 
+    /**
+     * 根据message来获取枚举实例
+     *
+     * @param enumClass 枚举类
+     * @param message   message
+     * @param <E>       枚举泛型
+     * @return 枚举实例
+     */
+    public static <E extends BaseEnum> E messageOf(Class<E> enumClass, String message) {
+        E[] enumConstants = enumClass.getEnumConstants();
+        for (E enumConstant : enumConstants) {
+            if (enumConstant.getMessage().equals(message)) {
+                return enumConstant;
+            }
+        }
+        return null;
+    }
 
 }

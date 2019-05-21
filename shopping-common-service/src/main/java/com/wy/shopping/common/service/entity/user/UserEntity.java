@@ -2,12 +2,10 @@ package com.wy.shopping.common.service.entity.user;
 
 import com.wy.shopping.common.service.enumeration.user.UserStateEnum;
 import com.wy.shopping.common.service.enumeration.user.UserTypeEnum;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * @author wy
@@ -18,6 +16,8 @@ import java.sql.Timestamp;
 @Getter
 @ToString
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
     /** 主键 */
     private String id;
@@ -38,7 +38,7 @@ public class UserEntity {
     private String licencePic;
 
     /** 注册时间 */
-    private Timestamp registerTime;
+    private LocalDateTime registerTime;
 
     /** 用户类型 {@link com.wy.shopping.common.service.enumeration.user.UserTypeEnum} */
     private UserTypeEnum userTypeEnum;
