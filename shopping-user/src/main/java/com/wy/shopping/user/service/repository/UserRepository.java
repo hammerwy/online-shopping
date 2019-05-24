@@ -132,4 +132,6 @@ public interface UserRepository {
      * @param userId            用户ID
      */
     void updateLocation(@Param("locationUpdateReq") LocationUpdateReq locationUpdateReq, @Param("userId") String userId);
+
+
 }

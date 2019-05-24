@@ -65,10 +65,6 @@
                 AND
                 username = #{userQueryReq.username}
             </if>
-<!--            <if test="userQueryReq.password != null">-->
-<!--                AND-->
-<!--                password = #{userQueryReq.password}-->
-<!--            </if>-->
             <if test="userQueryReq.phone != null">
                 AND
                 phone = #{userQueryReq.phone}
