@@ -13,6 +13,8 @@
         <module>shopping-product</module>
         <module>shopping-redis</module>
         <module>shopping-user</module>
+        <module>shopping-kafka</module>
+        <module>shopping-es</module>
     </modules>
 
     <groupId>com.wy</groupId>
@@ -89,6 +91,12 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!--dubbo-->
