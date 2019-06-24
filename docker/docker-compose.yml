@@ -22,3 +22,13 @@ services:
     depends_on:
       - zoo1
     container_name: kafka
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    container_name:
+      redis
+    command: redis-server
+

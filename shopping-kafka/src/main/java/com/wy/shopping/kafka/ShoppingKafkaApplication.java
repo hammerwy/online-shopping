@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.Resource;
 
+/**
+ * @author wy
+ */
 @SpringBootApplication
 public class ShoppingKafkaApplication implements CommandLineRunner {
 
