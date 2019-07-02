@@ -1,5 +1,9 @@
 package com.wy.shopping.product.repository;
 
+import com.wy.shopping.common.service.entity.product.BrandEntity;
+import com.wy.shopping.common.service.req.product.BrandReq;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
@@ -7,19 +11,20 @@ import java.util.List;
  * @date 2019-07-01
  * @description
  */
-public class BrandRepository {
+@Repository
+public interface BrandRepository {
     /**
      * 新增品牌
      * @param brandInsertReq
      * @return
      */
-    int createBrand(BrandInsertReq brandInsertReq);
+    int createBrand(BrandReq brandInsertReq);
 
     /**
      * 增量更新品牌
      * @param brandInsertReq
      */
-    int updateBrand(BrandInsertReq brandInsertReq);
+    int updateBrand(BrandReq brandInsertReq);
 
 
     /**
@@ -27,5 +32,5 @@ public class BrandRepository {
      * @param brandQueryReq
      * @return
      */
-    List<BrandEntity> findBrands(BrandQueryReq brandQueryReq);
+    List<BrandEntity> findBrands(BrandReq brandQueryReq);
 }
