@@ -38,4 +38,35 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.wy</groupId>
+                <artifactId>mybatis-gen-maven-plugin</artifactId>
+                <version>0.0.1</version>
+                <configuration>
+                    <host>localhost</host>
+                    <port>3306</port>
+                    <username>root</username>
+                    <password>123456</password>
+                    <db>sakila</db>
+                    <xmlPath>/src/main/resources/sqlmap</xmlPath>
+                    <mapperPath>/src/main/java/com/wy/shopping/user/service/repository</mapperPath>
+                    <entityPath>/src/main/java/com/wy/shopping/user/entity</entityPath>
+                    <!--如果强制生成，不创建分支-->
+                    <forceGen>true</forceGen>
+                    <entityPackage>com.wy.shopping.user.entity</entityPackage>
+                    <mapperPackage>com.wy.shopping.user.service.repository</mapperPackage>
+                    <!--可选值 copy 和数据库字段一样  underscoreToCamelCase下划线转驼峰-->
+                    <nameStrategy>underscoreToCamelCase</nameStrategy>
+                    <!--生成代码分支名-->
+                    <branchName>testGen</branchName>
+                    <tableMap>
+                        <actor/>
+                    </tableMap>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -33,7 +33,7 @@ services:
     command: redis-server
 
   jenkins:
-    images: jenkins/jenkins
+    images: jenkins/jenkins 
     restart: always
     ports:
       - "10080:8080"
