@@ -6,18 +6,28 @@ package com.wy.shopping.common.service.exception;
  * @date 2019-05-18
  */
 public interface ExceptionPrefix {
-    /** 通用异常码前缀 */
+    /**
+     * 通用异常码前缀
+     */
     String ComExpPrefix = "10";
 
-    /** User模块异常码前缀 */
+    /**
+     * User模块异常码前缀
+     */
     String UserExpPrefix = "20";
 
-    /** Product模块异常码前缀 */
+    /**
+     * Product模块异常码前缀
+     */
     String ProdExpPrefix = "30";
 
-    /** Order模块异常码前缀 */
+    /**
+     * Order模块异常码前缀
+     */
     String OrderExpPrefix = "40";
 
-    /** Analysis模块异常码前缀 */
+    /**
+     * Analysis模块异常码前缀
+     */
     String AnlsExpPrefix = "50";
 }

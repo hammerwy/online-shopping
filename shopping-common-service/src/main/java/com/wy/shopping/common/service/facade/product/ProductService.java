@@ -18,6 +18,7 @@ import java.util.List;
 public interface ProductService {
     /**
      * 新增产品
+     *
      * @param productReq
      * @return
      */
@@ -25,6 +26,7 @@ public interface ProductService {
 
     /**
      * 增量更新产品
+     *
      * @param productReq
      * @return
      */
@@ -32,6 +34,7 @@ public interface ProductService {
 
     /**
      * 多条件查询所有产品（支持分页）
+     *
      * @param prodQueryReq
      * @return
      */
@@ -39,6 +42,7 @@ public interface ProductService {
 
     /**
      * 新增类别
+     *
      * @param categoryEntity
      * @return
      */
@@ -46,6 +50,7 @@ public interface ProductService {
 
     /**
      * 增量更新类别
+     *
      * @param categoryEntity
      * @return
      */
@@ -53,6 +58,7 @@ public interface ProductService {
 
     /**
      * 删除类别
+     *
      * @param categoryId
      * @return
      */
@@ -60,6 +66,7 @@ public interface ProductService {
 
     /**
      * 新增品牌
+     *
      * @param brandInsertReq
      * @return
      */
@@ -67,6 +74,7 @@ public interface ProductService {
 
     /**
      * 增量更新品牌
+     *
      * @param brandInsertReq
      * @return
      */
@@ -74,6 +82,7 @@ public interface ProductService {
 
     /**
      * 多条件查询所有类别（支持分页）
+     *
      * @param categoryQueryReq
      * @return
      */
@@ -81,6 +90,7 @@ public interface ProductService {
 
     /**
      * 多条件查询所有品牌（支持分页）
+     *
      * @param brandReq
      * @return
      */

@@ -15,6 +15,7 @@ import java.util.List;
 public interface ProductRepository {
     /**
      * 新增产品
+     *
      * @param prodInsertReq
      * @return
      */
@@ -22,12 +23,14 @@ public interface ProductRepository {
 
     /**
      * 增量更新产品
+     *
      * @param prodUpdateReq
      */
     int updateProduct(ProductReq prodUpdateReq);
 
     /**
      * 多条件查询产品
+     *
      * @param prodQueryReq
      * @return
      */
@@ -35,6 +38,7 @@ public interface ProductRepository {
 
     /**
      * 查询制定类别是否被使用
+     *
      * @param categoryId
      * @return
      */

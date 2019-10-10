@@ -15,6 +15,7 @@ import java.util.List;
 public interface CategoryRepository {
     /**
      * 新增类别
+     *
      * @param categoryEntity
      * @return
      */
@@ -22,6 +23,7 @@ public interface CategoryRepository {
 
     /**
      * 修改类别,增量更新
+     *
      * @param categoryEntity
      * @return
      */
@@ -29,6 +31,7 @@ public interface CategoryRepository {
 
     /**
      * 删除类别
+     *
      * @param categoryId
      * @return
      */
@@ -36,6 +39,7 @@ public interface CategoryRepository {
 
     /**
      * 查询所有类别（分页）
+     *
      * @param categoryQueryReq
      */
     List<CategoryEntity> findCategorys(CategoryReq categoryQueryReq);

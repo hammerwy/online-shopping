@@ -27,12 +27,12 @@ public class Sender {
         send.addCallback(new ListenableFutureCallback() {
             @Override
             public void onFailure(Throwable ex) {
-                log.error("第 "+ index +" 条消息发送失败！");
+                log.error("第 " + index + " 条消息发送失败！");
             }
 
             @Override
             public void onSuccess(Object result) {
-                log.info("第 "+ index +" 条消息发送成功！");
+                log.info("第 " + index + " 条消息发送成功！");
             }
         });
     }

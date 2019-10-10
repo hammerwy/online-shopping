@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wy.shopping.product.repository.CategoryRepository" >
+<mapper namespace="com.wy.shopping.product.repository.CategoryRepository">
     <resultMap id="categoryResultMap" type="com.wy.shopping.common.service.entity.product.CategoryEntity">
         <result property="id" column="id"/>
         <result property="category" column="category_name"/>
         <result property="parentId" column="category_parentid"/>
         <result property="sort" column="sort"/>
     </resultMap>
-    <select id="findCategorys" resultMap="categoryResultMap" parameterType="com.wy.shopping.common.service.req.product.CategoryReq">
+    <select id="findCategorys" resultMap="categoryResultMap"
+            parameterType="com.wy.shopping.common.service.req.product.CategoryReq">
         SELECT id,category_name,category_parentid,sort
         FROM category
         <where>
@@ -34,13 +35,13 @@
     <update id="updateCategory" parameterType="com.wy.shopping.common.service.entity.product.CategoryEntity">
         UPDATE category
         <set>
-            <if test="category != null" >
+            <if test="category != null">
                 category_name = #{category,jdbcType=VARCHAR},
             </if>
-            <if test="parentId != null" >
+            <if test="parentId != null">
                 category_parentid = #{parentId,jdbcType=VARCHAR},
             </if>
-            <if test="sort != null" >
+            <if test="sort != null">
                 sort = #{sort,jdbcType=INTEGER},
             </if>
         </set>

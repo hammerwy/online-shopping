@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
  */
 public class SqlPrintConfig {
     @Bean
-    public SqlPrintInterceptor getSqlPrintInterceptor(){
+    public SqlPrintInterceptor getSqlPrintInterceptor() {
         return new SqlPrintInterceptor();
     }
 }

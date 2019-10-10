@@ -11,25 +11,34 @@ import com.wy.shopping.common.service.exception.ExceptionCodeEnum;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result<T> {
-    /** 执行结果 */
+    /**
+     * 执行结果
+     */
     private boolean isSuccess;
 
-    /** 错误码 */
+    /**
+     * 错误码
+     */
     private String errorCode;
 
-    /** 错误原因 */
+    /**
+     * 错误原因
+     */
     private String message;
 
-    /** 返回数据 */
+    /**
+     * 返回数据
+     */
     private T data;
 
     /**
      * 返回成功的结果
+     *
      * @param data 需返回的结果
      * @param <T>
      * @return
      */
-    public static <T> Result<T> newSuccessResult(T data){
+    public static <T> Result<T> newSuccessResult(T data) {
         Result<T> result = new Result<>();
         result.isSuccess = true;
         result.data = data;
@@ -38,10 +47,11 @@ public class Result<T> {
 
     /**
      * 返回成功的结果
+     *
      * @param <T>
      * @return
      */
-    public static <T> Result<T> newSuccessResult(){
+    public static <T> Result<T> newSuccessResult() {
         Result<T> result = new Result<>();
         result.isSuccess = true;
         return result;
@@ -50,10 +60,11 @@ public class Result<T> {
     /**
      * 返回失败的结果
      * PS：返回"未知异常"
+     *
      * @param <T>
      * @return
      */
-    public static <T> Result<T> newFailureResult(){
+    public static <T> Result<T> newFailureResult() {
         Result<T> result = new Result<>();
         result.isSuccess = false;
         result.errorCode = ExceptionCodeEnum.UNKNOW_ERROR.getCode();
@@ -63,11 +74,12 @@ public class Result<T> {
 
     /**
      * 返回失败的结果
+     *
      * @param bizExcepiton 异常
      * @param <T>
      * @return
      */
-    public static <T> Result<T> newFailureResult(BizException bizExcepiton){
+    public static <T> Result<T> newFailureResult(BizException bizExcepiton) {
         Result<T> result = new Result<>();
         result.isSuccess = false;
         result.errorCode = bizExcepiton.getExceptionCode().getCode();
@@ -77,12 +89,13 @@ public class Result<T> {
 
     /**
      * 返回失败的结果
+     *
      * @param bizExcepiton 异常
-     * @param data 需返回的数据
+     * @param data         需返回的数据
      * @param <T>
      * @return
      */
-    public static <T> Result<T> newFailureResult(BizException bizExcepiton, T data){
+    public static <T> Result<T> newFailureResult(BizException bizExcepiton, T data) {
         Result<T> result = new Result<>();
         result.isSuccess = false;
         result.errorCode = bizExcepiton.getExceptionCode().getCode();

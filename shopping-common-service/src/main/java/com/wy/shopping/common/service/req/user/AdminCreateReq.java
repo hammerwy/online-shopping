@@ -18,16 +18,24 @@ import lombok.ToString;
 @Builder
 public class AdminCreateReq extends AbstractReq {
 
-    /** 用户名 */
+    /**
+     * 用户名
+     */
     private String username;
 
-    /** 密码 */
+    /**
+     * 密码
+     */
     private String password;
 
-    /** 手机号 */
+    /**
+     * 手机号
+     */
     private String phone;
 
-    /** 角色ID */
+    /**
+     * 角色ID
+     */
     private String roleId;
 
 }

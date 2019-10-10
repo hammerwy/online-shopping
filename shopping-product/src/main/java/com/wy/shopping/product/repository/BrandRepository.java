@@ -15,6 +15,7 @@ import java.util.List;
 public interface BrandRepository {
     /**
      * 新增品牌
+     *
      * @param brandInsertReq
      * @return
      */
@@ -22,6 +23,7 @@ public interface BrandRepository {
 
     /**
      * 增量更新品牌
+     *
      * @param brandInsertReq
      */
     int updateBrand(BrandReq brandInsertReq);
@@ -29,6 +31,7 @@ public interface BrandRepository {
 
     /**
      * 查询所有品牌（支持分页）
+     *
      * @param brandQueryReq
      * @return
      */

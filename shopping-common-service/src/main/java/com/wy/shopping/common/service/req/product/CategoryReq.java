@@ -13,12 +13,18 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CategoryReq {
-    /** 类别id */
+    /**
+     * 类别id
+     */
     private String id;
 
-    /** 类别名称（模糊匹配） */
+    /**
+     * 类别名称（模糊匹配）
+     */
     private String categoryName;
 
-    /** 父分类id (一级分类的parentId为空) */
+    /**
+     * 父分类id (一级分类的parentId为空)
+     */
     private String parentId;
 }
