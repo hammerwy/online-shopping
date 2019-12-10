@@ -11,22 +11,30 @@ import com.wy.shopping.common.service.req.user.UserQueryReq;
 import com.wy.shopping.common.service.req.user.UserStateReq;
 import org.apache.dubbo.config.annotation.Reference;
 import org.assertj.core.util.Lists;
+
+import static org.hamcrest.Matchers.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author wy
  * @description
  * @date 2019-05-21
  */
-//@EnableSqlPrint
+@Rollback
+@EnableSqlPrint
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserServiceImplTest {
@@ -55,6 +63,7 @@ public class UserServiceImplTest {
 
     @Test
     public void findUsers() {
+        final UserEntity user = UserEntity.builder().id("a").mail("wy@163.com").password("123456").build();
         List<UserEntity> users = userService.findUsers(UserQueryReq.builder().username("wy").orderByRegisterTime(1).build());
         System.out.println(users);
     }
@@ -66,5 +75,22 @@ public class UserServiceImplTest {
         BatchReq<UserStateReq> batchReq = new BatchReq<>();
         batchReq.setReqList(userStateReqs);
         userService.batchUpdateUserState(batchReq);
+    }
+
+    @Before
+    public void init() {
+        System.out.println("before");
+    }
+
+    @After
+    public void after() {
+        System.out.println("after");
+    }
+
+    @Test
+    @Ignore
+    public void testTest() {
+        int a = 9;
+        assertThat(a, allOf(greaterThan(5), lessThan(10)));
     }
 }

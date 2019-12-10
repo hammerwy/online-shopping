@@ -8,16 +8,15 @@ import lombok.Getter;
  * @date 2019-05-10
  */
 @Getter
-public enum  OrderEnum implements BaseEnum {
+public enum OrderEnum implements BaseEnum {
     /**
      * 降序
      */
-    DESC(1,"DESC"),
+    DESC(1, "DESC"),
     /**
      * 升序
      */
-    ASC(2,"ASC")
-    ;
+    ASC(2, "ASC");
 
     private int code;
     private String message;

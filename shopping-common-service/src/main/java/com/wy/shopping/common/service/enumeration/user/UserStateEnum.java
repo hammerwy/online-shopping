@@ -17,8 +17,7 @@ public enum UserStateEnum implements BaseEnum {
     /**
      * 禁用
      */
-    OFF(0, "禁用");
-    ;
+    OFF(0, "禁用");;
     private int code;
     private String message;
 

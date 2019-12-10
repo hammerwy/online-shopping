@@ -7,5 +7,6 @@ package com.wy.shopping.common.service.enumeration;
  */
 public interface BaseEnum {
     int getCode();
+
     String getMessage();
 }

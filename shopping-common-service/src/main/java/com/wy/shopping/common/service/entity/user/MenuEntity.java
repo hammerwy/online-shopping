@@ -15,15 +15,23 @@ import lombok.ToString;
 @ToString
 @Builder
 public class MenuEntity {
-    /** 主键 */
+    /**
+     * 主键
+     */
     private String id;
 
-    /** 菜单名称 */
+    /**
+     * 菜单名称
+     */
     private String menuName;
 
-    /** 菜单对应页面的URL */
+    /**
+     * 菜单对应页面的URL
+     */
     private String url;
 
-    /** 父菜单的ID */
+    /**
+     * 父菜单的ID
+     */
     private String parentId;
 }

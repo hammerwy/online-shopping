@@ -15,12 +15,18 @@ import lombok.ToString;
 @ToString
 @Builder
 public class PermissionEntity {
-    /** 主键 */
+    /**
+     * 主键
+     */
     private String id;
 
-    /** 权限名称 */
+    /**
+     * 权限名称
+     */
     private String permission;
 
-    /** 权限描述 */
+    /**
+     * 权限描述
+     */
     private String desc;
 }

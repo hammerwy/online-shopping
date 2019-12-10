@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <parent>
         <groupId>com.wy</groupId>
         <artifactId>shopping</artifactId>
@@ -38,4 +39,35 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.wy</groupId>
+                <artifactId>mybatis-gen-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <host>localhost</host>
+                    <port>3306</port>
+                    <username>root</username>
+                    <password>12345678</password>
+                    <db>sakila</db>
+                    <xmlPath>/src/main/resources/sqlmap</xmlPath>
+                    <mapperPath>/src/main/java/com/wy/shopping/user/service/repository</mapperPath>
+                    <entityPath>/src/main/java/com/wy/shopping/user/entity</entityPath>
+                    <!--如果强制生成，不创建分支-->
+                    <forceGen>true</forceGen>
+                    <entityPackage>com.wy.shopping.user.entity</entityPackage>
+                    <mapperPackage>com.wy.shopping.user.service.repository</mapperPackage>
+                    <!--可选值 copy 和数据库字段一样  underscoreToCamelCase下划线转驼峰-->
+                    <nameStrategy>underscoreToCamelCase</nameStrategy>
+                    <!--生成代码分支名-->
+                    <branchName>testGen</branchName>
+                    <tableMap>
+                        <actor>TestActor</actor>
+                    </tableMap>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

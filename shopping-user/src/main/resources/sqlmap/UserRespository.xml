@@ -10,8 +10,10 @@
         <result property="mail" column="mail"/>
         <result property="licencePic" column="licence_pic"/>
         <result property="registerTime" column="register_time"/>
-        <result property="userTypeEnum" column="user_type" typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
-        <result property="userStateEnum" column="user_state" typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
+        <result property="userTypeEnum" column="user_type"
+                typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
+        <result property="userStateEnum" column="user_state"
+                typeHandler="com.wy.shopping.common.service.typehandler.EnumTypeHandler"/>
         <association property="roleEntity" javaType="com.wy.shopping.common.service.entity.user.RoleEntity">
             <id property="id" column="role_id"/>
             <result property="name" column="role_name"/>
@@ -26,14 +28,14 @@
 
     <select id="findUsers" resultMap="userMap">
         SELECT user.user_id as user_id,
-               username,
-               password,
-               phone,
-               mail,
-               licence_pic,
-               register_time,
-               user_type,
-               user_state,
+        username,
+        password,
+        phone,
+        mail,
+        licence_pic,
+        register_time,
+        user_type,
+        user_state,
         role.role_id as role_id,
         role.role_name as role_name,
         role.role_desc as role_desc,
@@ -107,7 +109,7 @@
         insert into t_user (user_id, username, password, phone, mail, licence_pic, register_time, user_type, user_state, role_id)
         values (#{id}, #{username}, #{password}, #{phone}, #{mail}, #{licencePic}, #{registerTime},#{userTypeEnum.code},#{userStateEnum.code},#{roleEntity.id})
     </insert>
-    
+
     <update id="batchUpdateUserState">
         update t_user
         set user_state = #{userStateCode}
@@ -116,7 +118,7 @@
             #{userId}
         </foreach>
     </update>
-    
+
     <select id="findRoles" resultType="com.wy.shopping.common.service.entity.user.RoleEntity">
         select * from t_role
     </select>

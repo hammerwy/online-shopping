@@ -16,15 +16,23 @@ import lombok.ToString;
 @ToString
 @Builder
 public class LocationCreateReq extends AbstractReq {
-    /** 详细地址 */
+    /**
+     * 详细地址
+     */
     private String location;
 
-    /** 收货人姓名 */
+    /**
+     * 收货人姓名
+     */
     private String name;
 
-    /** 收货人手机号 */
+    /**
+     * 收货人手机号
+     */
     private String phone;
 
-    /** 邮编 */
+    /**
+     * 邮编
+     */
     private String postCode;
 }
