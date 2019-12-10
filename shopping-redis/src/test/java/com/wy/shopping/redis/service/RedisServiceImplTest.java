@@ -2,6 +2,7 @@ package com.wy.shopping.redis.service;
 
 import com.wy.shopping.common.service.facade.redis.RedisService;
 import org.apache.dubbo.config.annotation.Reference;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,4 +42,16 @@ public class RedisServiceImplTest {
         Map<Object, Object> resultMap = redisService.getHashByCursor(key);
         System.out.println(resultMap);
     }
+
+    @Test
+    public void getDistributedLock() {
+        Boolean distributedLock = redisService.getDistributedLock("test:lock");
+        Assert.assertTrue(distributedLock);
+    }
+
+    @Test
+    public void unlockDistributedLock() {
+        redisService.unlockDistributedLock("test:lock", "123");
+    }
+
 }

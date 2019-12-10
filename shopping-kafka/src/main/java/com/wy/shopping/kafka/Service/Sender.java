@@ -1,6 +1,5 @@
 package com.wy.shopping.kafka.Service;
 
-import com.wy.shopping.common.service.facade.kafka.KafkaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -23,6 +22,7 @@ public class Sender {
     private final String TOPIC = "test.topic";
 
     public void sendMsg(Integer index) {
+
         ListenableFuture send = kafkaTemplate.send(TOPIC, "test-message : " + index);
         send.addCallback(new ListenableFutureCallback() {
             @Override
