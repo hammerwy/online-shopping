@@ -1,4 +1,4 @@
-package com.wy.shopping.redis.service;
+package com.wy.shopping.redis.queue;
 
 /**
  * @author wangyong
