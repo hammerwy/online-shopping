@@ -16,6 +16,8 @@ import java.util.concurrent.TimeUnit;
  * @date 2019-05-21
  */
 public interface RedisService {
+
+
     /**
      * 批量移除key
      *

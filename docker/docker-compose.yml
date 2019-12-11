@@ -32,12 +32,12 @@ services:
       redis
     command: redis-server
 
-  jenkins:
-    images: jenkins/jenkins
-    restart: always
-    ports:
-      - "10080:8080"
-    container_name:
-      jenkins
+#  jenkins:
+#    images: jenkins/jenkins
+#    restart: always
+#    ports:
+#      - "10080:8080"
+#    container_name:
+#      jenkins
 
 
