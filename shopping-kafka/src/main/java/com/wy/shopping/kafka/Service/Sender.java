@@ -7,6 +7,8 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author wy
@@ -35,5 +37,12 @@ public class Sender {
                 log.info("第 " + index + " 条消息发送成功！");
             }
         });
+    }
+
+
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add(null);
+        System.out.println(list.size());
     }
 }

@@ -8,8 +8,11 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author wy
@@ -41,17 +44,6 @@ public class RedisServiceImplTest {
         String key = "primary:hashkey";
         Map<Object, Object> resultMap = redisService.getHashByCursor(key);
         System.out.println(resultMap);
-    }
-
-    @Test
-    public void getDistributedLock() {
-        Boolean distributedLock = redisService.getDistributedLock("test:lock");
-        Assert.assertTrue(distributedLock);
-    }
-
-    @Test
-    public void unlockDistributedLock() {
-        redisService.unlockDistributedLock("test:lock", "123");
     }
 
 }

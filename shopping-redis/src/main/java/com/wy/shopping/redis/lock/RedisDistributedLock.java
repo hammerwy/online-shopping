@@ -92,8 +92,9 @@ public class RedisDistributedLock implements DistributedLock {
         return String.join(":", LOCK_KEY_PREFIX, SpringContext.getActiveProfile(), sourceKey);
     }
 
-
     public static void main(String[] args) {
-
+        String a = "𧿹😀";
+        System.out.println(a.length());
+        System.out.println(a.codePointCount(0, a.length()));
     }
 }

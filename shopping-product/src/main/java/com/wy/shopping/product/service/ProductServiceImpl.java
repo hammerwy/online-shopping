@@ -8,7 +8,6 @@ import com.wy.shopping.common.service.req.product.BrandReq;
 import com.wy.shopping.common.service.req.product.CategoryReq;
 import com.wy.shopping.common.service.req.product.ProductReq;
 import com.wy.shopping.common.service.resp.Result;
-import com.wy.shopping.product.repository.BrandRepository;
 import com.wy.shopping.product.repository.CategoryRepository;
 import com.wy.shopping.product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -30,9 +29,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Resource
     private ProductRepository productRepository;
-
-    @Resource
-    private BrandRepository brandRepository;
 
     @Override
     public Result createProduct(ProductReq productReq) {
