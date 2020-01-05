@@ -8,8 +8,8 @@ services:
     networks:
       - default
     volumes: # 数据路径映射
-      - E:\Data\Redis\8001\data:/data
-      - E:\Data\Redis\8001\conf:/usr/local/etc/redis/redis.conf
+      - /Users/wy/Data/Redis/8001/data:/data
+      - /Users/wy/Data/Redis/8001/conf/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PORT=8001
     sysctls:
@@ -17,6 +17,7 @@ services:
     ports:
       - '8001:8001'       #服务端口
       - '18001:18001'   #集群端口
+    command: redis-server /usr/local/etc/redis/redis.conf
 
   redis2:
     image: redis
@@ -25,8 +26,8 @@ services:
     networks:
       - default
     volumes:
-      - E:\Data\Redis\8002\data:/data
-      - E:\Data\Redis\8002\conf:/usr/local/etc/redis/redis.conf
+      - /Users/wy/Data/Redis/8002/data:/data
+      - /Users/wy/Data/Redis/8002/conf/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PORT=8002
     sysctls:
@@ -34,6 +35,7 @@ services:
     ports:
       - '8002:8002'
       - '18002:18002'
+    command: redis-server /usr/local/etc/redis/redis.conf
 
   redis3:
     image: redis
@@ -42,8 +44,8 @@ services:
     networks:
       - default
     volumes:
-      - E:\Data\Redis\8003\data:/data
-      - E:\Data\Redis\8003\conf:/usr/local/etc/redis/redis.conf
+      - /Users/wy/Data/Redis/8003/data:/data
+      - /Users/wy/Data/Redis/8003/conf/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PORT=8003
     sysctls:
@@ -51,6 +53,7 @@ services:
     ports:
       - '8003:8003'
       - '18003:18003'
+    command: redis-server /usr/local/etc/redis/redis.conf
 
   redis4:
     image: redis
@@ -59,8 +62,8 @@ services:
     networks:
       - default
     volumes:
-      - E:\Data\Redis\8004\data:/data
-      - E:\Data\Redis\8004\conf:/usr/local/etc/redis/redis.conf
+      - /Users/wy/Data/Redis/8004/data:/data
+      - /Users/wy/Data/Redis/8004/conf/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PORT=8004
     sysctls:
@@ -68,6 +71,7 @@ services:
     ports:
       - '8004:8004'
       - '18004:18004'
+    command: redis-server /usr/local/etc/redis/redis.conf
 
   redis5:
     image: redis
@@ -76,8 +80,8 @@ services:
     networks:
       - default
     volumes:
-      - E:\Data\Redis\8005\data:/data
-      - E:\Data\Redis\8005\conf:/usr/local/etc/redis/redis.conf
+      - /Users/wy/Data/Redis/8005/data:/data
+      - /Users/wy/Data/Redis/8005/conf/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PORT=8005
     sysctls:
@@ -85,6 +89,7 @@ services:
     ports:
       - '8005:8005'
       - '18005:18005'
+    command: redis-server /usr/local/etc/redis/redis.conf
 
   redis6:
     image: redis
@@ -93,8 +98,8 @@ services:
     networks:
       - default
     volumes:
-      - E:\Data\Redis\8006\data:/data
-      - E:\Data\Redis\8006\conf:/usr/local/etc/redis/redis.conf
+      - /Users/wy/Data/Redis/8006/data:/data
+      - /Users/wy/Data/Redis/8006/conf/redis.conf:/usr/local/etc/redis/redis.conf
     environment:
       - REDIS_PORT=8006
     sysctls:
@@ -102,62 +107,8 @@ services:
     ports:
       - '8006:8006'
       - '18006:18006'
+    command: redis-server /usr/local/etc/redis/redis.conf
 networks:
   default:
     external:
       name: redis-net
-
-#services:
-#  redis1:
-#    image: redis
-#    network_mode: host
-#    restart: always
-#    volumes:
-#      - E:\Data\Redis/8001/data:/data
-#    environment:
-#      - REDIS_PORT=8001
-#
-#  redis2:
-#    image: redis
-#    network_mode: host
-#    restart: always
-#    volumes:
-#      - E:\Data\Redis/8002/data:/data
-#    environment:
-#      - REDIS_PORT=8002
-#
-#  redis3:
-#    image: redis
-#    network_mode: host
-#    restart: always
-#    volumes:
-#      - E:\Data\Redis/8003/data:/data
-#    environment:
-#      - REDIS_PORT=8003
-#
-#  redis4:
-#    image: redis
-#    network_mode: host
-#    restart: always
-#    volumes:
-#      - E:\Data\Redis/8004/data:/data
-#    environment:
-#      - REDIS_PORT=8004
-#
-#  redis5:
-#    image: redis
-#    network_mode: host
-#    restart: always
-#    volumes:
-#      - E:\Data\Redis/8005/data:/data
-#    environment:
-#      - REDIS_PORT=8005
-#
-#  redis6:
-#    image: redis
-#    network_mode: host
-#    restart: always
-#    volumes:
-#      - E:\Data\Redis/8006/data:/data
-#    environment:
-#      - REDIS_PORT=8006
