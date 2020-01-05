@@ -1,0 +1,9 @@
+port ${PORT}                                       ##节点端口
+protected-mode no                                  ##开启集群模式
+cluster-enabled yes                                ##cluster集群模式
+cluster-config-file nodes.conf                     ##集群配置名
+cluster-node-timeout 5000                          ##超时时间
+cluster-announce-ip 172.19.0.1                  ##实际为各节点网卡分配ip  先用上网关ip代替
+cluster-announce-port ${PORT}                      ##节点映射端口
+cluster-announce-bus-port 1${PORT}                 ##节点总线端口
+appendonly yes                                     ##持久化模式

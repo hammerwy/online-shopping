@@ -112,5 +112,3 @@ networks:
   default:
     external:
       name: redis-net
-
-#  --cluster create 172.20.0.7:8001 172.20.0.2:8002 172.20.0.3:8003 172.20.0.6:8004 172.20.0.4:8005 172.20.0.5:8006 --cluster-replicas 1
