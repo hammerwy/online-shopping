@@ -44,7 +44,7 @@
         <swagger.version>2.9.2</swagger.version>
         <jwt.version>0.9.1</jwt.version>
         <commons-io.version>2.4</commons-io.version>
-        <protobuf.version>3.7.0</protobuf.version>
+        <protobuf.version>3.16.1</protobuf.version>
         <protobuf.java.format.version>1.4</protobuf.java.format.version>
         <jackson.protobuf.version>0.9.10-jackson2.9-proto2</jackson.protobuf.version>
         <jackson.version>2.10.0</jackson.version>
