@@ -20,7 +20,7 @@
         <common.lang3.version>3.9</common.lang3.version>
         <mybatis.version>1.3.1</mybatis.version>
         <jbcrypt.version>0.4</jbcrypt.version>
-        <dubbo.version>2.7.1</dubbo.version>
+        <dubbo.version>2.7.15</dubbo.version>
     </properties>
 
     <dependencies>
